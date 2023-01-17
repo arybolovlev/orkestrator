@@ -7,11 +7,11 @@ import (
 )
 
 func TestNewTask(t *testing.T) {
-	task := NewTask("name", Image{Name: "self", Tag: "0.0.1"})
+	task := NewTask("taskName", Image{Name: "imageName", Tag: "0.0.1"})
 	want := &Task{
-		Name: "name",
+		Name: "taskName",
 		Image: Image{
-			Name: "self",
+			Name: "imageName",
 			Tag:  "0.0.1",
 		},
 	}
