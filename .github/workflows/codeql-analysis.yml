@@ -1,0 +1,34 @@
+name: "Code Scanning"
+
+on:
+  schedule:
+    - cron: '30 3 * * 0'
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@515828d97454b8354517688ddc5b48402b723750 # v2.1.38
+        with:
+          languages: go
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@515828d97454b8354517688ddc5b48402b723750 # v2.1.38
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@515828d97454b8354517688ddc5b48402b723750 # v2.1.38
