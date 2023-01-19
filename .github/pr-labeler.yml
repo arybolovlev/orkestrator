@@ -1,0 +1,14 @@
+documentation:
+- README.md
+
+job:
+- job/**/*.go
+
+scheduler:
+- scheduler/**/*.go
+
+manager:
+- manager/**/*.go
+
+task:
+- task/**/*.go
