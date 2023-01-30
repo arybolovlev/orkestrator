@@ -1,5 +1,6 @@
 documentation:
 - README.md
+- docs/*.md
 
 job:
 - job/**/*.go
@@ -12,3 +13,6 @@ manager:
 
 task:
 - task/**/*.go
+
+golang:
+- '**/*.go'
