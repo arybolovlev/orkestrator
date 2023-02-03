@@ -25,3 +25,59 @@ func TestNewJob(t *testing.T) {
 
 	require.Equal(t, job, want)
 }
+
+func TestValidateJobEmptyJobName(t *testing.T) {
+	job := &Job{
+		Name: "",
+		Tasks: []task.Task{
+			{
+				Name: "taskName",
+				Image: task.Image{
+					Name: "imageName",
+					Tag:  "0.0.1",
+				},
+			},
+		},
+	}
+	require.Error(t, job.Validate())
+}
+
+func TestValidateJobNoTasks(t *testing.T) {
+	job := &Job{
+		Name:  "jobName",
+		Tasks: []task.Task{},
+	}
+	require.Error(t, job.Validate())
+}
+
+func TestValidateJobValidateTaskEmptyTaskName(t *testing.T) {
+	job := &Job{
+		Name: "",
+		Tasks: []task.Task{
+			{
+				Name: "",
+				Image: task.Image{
+					Name: "imageName",
+					Tag:  "0.0.1",
+				},
+			},
+		},
+	}
+	require.Error(t, job.Validate())
+}
+
+func TestValidateJobValidateTaskEmptyImageName(t *testing.T) {
+	job := &Job{
+		Name: "",
+		Tasks: []task.Task{
+			{
+				Name: "taskName",
+				Image: task.Image{
+					Name: "",
+					Tag:  "0.0.1",
+				},
+			},
+		},
+	}
+	require.Error(t, job.Validate())
+}
