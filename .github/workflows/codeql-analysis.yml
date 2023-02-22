@@ -1,8 +1,8 @@
 name: "Code Scanning"
 
 on:
-  schedule:
-    - cron: '30 3 * * 0'
+#  schedule:
+#    - cron: '30 3 * * 0'
   pull_request:
     branches:
       - main
