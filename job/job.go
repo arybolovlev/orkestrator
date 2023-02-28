@@ -7,6 +7,7 @@ import (
 )
 
 type Job struct {
+	ID    string
 	Name  string
 	Tasks []task.Task
 }
