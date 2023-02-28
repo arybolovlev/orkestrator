@@ -4,8 +4,14 @@ package client;
 
 option go_package = "github.com/arybolovlev/orkestrator/proto/client";
 
-message CreateJobRequest {}
-message CreateJobResponse {}
+message CreateJobRequest {
+    string name = 1;
+}
+
+message CreateJobResponse {
+    string id = 1;
+    string name = 2;
+}
 
 message GetJobRequest {}
 message GetJobResponse {}
