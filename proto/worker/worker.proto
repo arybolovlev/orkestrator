@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package worker;
+
+option go_package = "github.com/arybolovlev/orkestrator/proto/worker";
+
+message SubscribeRequest {}
+message SubscribeResponse {}
+
+message UnsubscribeRequest {}
+message UnsubscribeResponse {}
+
+message StatusRequest {}
+message StatusResponse {}
+
+service Worker {
+    rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse);
+    rpc Unsubscribe(UnsubscribeRequest) returns (UnsubscribeResponse);
+    rpc Status(StatusRequest) returns (StatusResponse);
+}
