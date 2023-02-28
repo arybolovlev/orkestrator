@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package scheduler;
+
+option go_package = "github.com/arybolovlev/orkestrator/proto/scheduler";
+
+message RegisterRequest {}
+message RegisterResponse {}
+
+message UnregisterRequest {}
+message UnregisterResponse {}
+
+message StatusRequest {}
+message StatusResponse {}
+
+service Scheduler {
+    rpc Register(RegisterRequest) returns (stream RegisterResponse);
+    rpc Unregister(UnregisterRequest) returns (UnregisterResponse);
+    rpc Status(StatusRequest) returns (StatusResponse);
+}

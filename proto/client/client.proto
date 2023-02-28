@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/arybolovlev/orkestrator/proto/client";
+
+message CreateJobRequest {}
+message CreateJobResponse {}
+
+message GetJobRequest {}
+message GetJobResponse {}
+
+message GetStatusRequest {}
+message GetStatusResponse {}
+
+service Client {
+    rpc CreateJob(CreateJobRequest) returns (CreateJobResponse);
+    rpc GetJob(GetJobRequest) returns (GetJobResponse);
+    rpc GetStatus(GetStatusRequest) returns (GetStatusResponse);
+}
