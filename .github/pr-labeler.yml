@@ -1,18 +1,33 @@
+api:
+- api/**/*.go
+
+client:
+- client/**/*.go
+- manager/client/**/*.go
+
 documentation:
 - README.md
 - docs/*.md
 
-job:
-- job/**/*.go
+golang:
+- '**/*.go'
 
-scheduler:
-- scheduler/**/*.go
+job:
+- api/job/**/*.go
 
 manager:
 - manager/**/*.go
 
-task:
-- task/**/*.go
+proto:
+- manager/**/*.proto
 
-golang:
-- '**/*.go'
+scheduler:
+- scheduler/**/*.go
+- manager/scheduler/**/*.go
+
+task:
+- api/task/**/*.go
+
+worker:
+- worker/**/*.go
+- manager/worker/**/*.go
