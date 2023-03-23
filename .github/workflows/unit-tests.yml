@@ -26,4 +26,5 @@ jobs:
           go-version-file: 'go.mod'
 
       - name: Run unit tests
-        run: make test
+        #run: make test
+        run: go test -v ./...
