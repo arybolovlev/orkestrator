@@ -4,11 +4,12 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "sunday"
     commit-message:
       prefix: "🌱"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     commit-message:
       prefix: "🤖"
