@@ -1,6 +1,5 @@
 Orkestrator
-[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](LICENSE)
-===
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/arybolovlev/orkestrator) [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](LICENSE)
 
 Orkestrator is an application to deploy and manage containers. The project aims to be educational to explore and demonstrate different aspects of container orchestration.
 
