@@ -8,6 +8,22 @@ The specification is not fully complete yet and will be updated in the future. I
 
 Please, take into account the educational status of this project and DO NOT use it in your production or critical environment.
 
+## CLI Options
+
+### Global options
+
+`-port` -- Port to connect or listen to.
+
+### Client options
+
+`-client` -- Run Orkestrator in the client mode.
+
+`-file` -- Specification file.
+
+### Server options
+
+`-server` -- Run Orkestrator in the server mode.
+
 ## Specification
 
 Orkestrator consists of a few components that interact with each other to manage containers:

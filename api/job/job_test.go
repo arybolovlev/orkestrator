@@ -3,13 +3,14 @@ package job
 import (
 	"testing"
 
-	"github.com/arybolovlev/orkestrator/task"
+	"github.com/arybolovlev/orkestrator/api/task"
+	"github.com/arybolovlev/orkestrator/helpers"
 
 	"github.com/stretchr/testify/require"
 )
 
 func TestNewJob(t *testing.T) {
-	job := NewJob("jobName", []task.Task{{Name: "taskName", Image: task.Image{Name: "imageName", Tag: "0.0.1"}}})
+	job := NewJob("jobName", []task.Task{{Name: "taskName", Image: task.Image{Name: "imageName", Tag: helpers.PointerOf("0.0.1")}}})
 	want := &Job{
 		Name: "jobName",
 		Tasks: []task.Task{
@@ -17,7 +18,7 @@ func TestNewJob(t *testing.T) {
 				Name: "taskName",
 				Image: task.Image{
 					Name: "imageName",
-					Tag:  "0.0.1",
+					Tag:  helpers.PointerOf("0.0.1"),
 				},
 			},
 		},
@@ -34,7 +35,7 @@ func TestValidateJobEmptyJobName(t *testing.T) {
 				Name: "taskName",
 				Image: task.Image{
 					Name: "imageName",
-					Tag:  "0.0.1",
+					Tag:  helpers.PointerOf("0.0.1"),
 				},
 			},
 		},
@@ -58,7 +59,7 @@ func TestValidateJobValidateTaskEmptyTaskName(t *testing.T) {
 				Name: "",
 				Image: task.Image{
 					Name: "imageName",
-					Tag:  "0.0.1",
+					Tag:  helpers.PointerOf("0.0.1"),
 				},
 			},
 		},
@@ -74,7 +75,7 @@ func TestValidateJobValidateTaskEmptyImageName(t *testing.T) {
 				Name: "taskName",
 				Image: task.Image{
 					Name: "",
-					Tag:  "0.0.1",
+					Tag:  helpers.PointerOf("0.0.1"),
 				},
 			},
 		},

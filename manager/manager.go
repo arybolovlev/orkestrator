@@ -1,27 +1,34 @@
 package manager
 
 import (
+	"fmt"
 	"log"
 	"net"
 
-	"github.com/arybolovlev/orkestrator/proto/client"
 	"google.golang.org/grpc"
+
+	"github.com/arybolovlev/orkestrator/api/job"
+	"github.com/arybolovlev/orkestrator/api/proto/client"
 )
 
-func Run() {
-	ln, err := net.Listen("tcp", ":8090")
+var (
+	Jobs = map[string]job.Job{}
+)
+
+func Run(port int) {
+	ln, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 	if err != nil {
-		log.Fatalf("Falied to listen: %v", err)
+		log.Fatalf("falied to listen: %v", err)
 	}
 
-	srv := &manager{}
 	gs := grpc.NewServer()
-	client.RegisterClientServer(gs, srv)
+	client.RegisterClientServer(gs, &manager{})
 
 	log.Printf("server listening at %v", ln.Addr())
 
 	if err := gs.Serve(ln); err != nil {
-		log.Fatalf("Failed to serve: %v", err)
+		log.Fatalf("failed to serve: %v", err)
 	}
-	log.Println("Tot ziens!")
+
+	log.Println("tot ziens!")
 }
