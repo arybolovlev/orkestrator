@@ -24,6 +24,10 @@ Please, take into account the educational status of this project and DO NOT use 
 
 `-server` -- Run Orkestrator in the server mode.
 
+### Worker options
+
+`-worker` -- Run Orkestrator in the worker mode.
+
 ## Specification
 
 Orkestrator consists of a few components that interact with each other to manage containers:

@@ -7,12 +7,14 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/arybolovlev/orkestrator/api/job"
 	"github.com/arybolovlev/orkestrator/api/proto/client"
+	"github.com/arybolovlev/orkestrator/api/proto/worker"
+	"github.com/arybolovlev/orkestrator/api/structs"
 )
 
 var (
-	Jobs = map[string]job.Job{}
+	Jobs    = map[string]structs.Job{}
+	Workers = map[string]structs.Worker{}
 )
 
 func Run(port int) {
@@ -22,7 +24,8 @@ func Run(port int) {
 	}
 
 	gs := grpc.NewServer()
-	client.RegisterClientServer(gs, &manager{})
+	client.RegisterClientServer(gs, &clientManager{})
+	worker.RegisterWorkerServer(gs, &workerManager{})
 
 	log.Printf("server listening at %v", ln.Addr())
 
