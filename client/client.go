@@ -9,12 +9,12 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/arybolovlev/orkestrator/api/job"
 	"github.com/arybolovlev/orkestrator/api/proto/client"
+	"github.com/arybolovlev/orkestrator/api/structs"
 )
 
 type JobSpec struct {
-	Job []job.Job `hcl:"job,block"`
+	Job []structs.Job `hcl:"job,block"`
 }
 
 func Run(port int, spec string) {
@@ -54,6 +54,6 @@ func Run(port int, spec string) {
 			log.Fatalf("falied to create job %s: %s", req.Name, err)
 			os.Exit(1)
 		}
-		log.Println("New job sucessfully created:", job)
+		log.Println("new job sucessfully created:", job)
 	}
 }
