@@ -4,11 +4,22 @@ package client;
 
 option go_package = "github.com/arybolovlev/orkestrator/proto/client";
 
-message CreateJobRequest {
+message Image {
     string name = 1;
+    string tag = 2;
 }
 
-message CreateJobResponse {
+message Task {
+    string name = 1;
+    Image image = 2;
+}
+
+message RegisterJobRequest {
+    string name = 1;
+    repeated Task task = 2;
+}
+
+message RegisterJobResponse {
     string id = 1;
     string name = 2;
 }
@@ -16,11 +27,15 @@ message CreateJobResponse {
 message GetJobRequest {}
 message GetJobResponse {}
 
+message GetJobListRequest {}
+message GetJobListResponse {}
+
 message GetStatusRequest {}
 message GetStatusResponse {}
 
 service Client {
-    rpc CreateJob(CreateJobRequest) returns (CreateJobResponse);
+    rpc RegisterJob(RegisterJobRequest) returns (RegisterJobResponse);
     rpc GetJob(GetJobRequest) returns (GetJobResponse);
+    rpc GetJobList(GetJobListRequest) returns (GetJobListResponse);
     rpc GetStatus(GetStatusRequest) returns (GetStatusResponse);
 }

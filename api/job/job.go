@@ -3,13 +3,13 @@ package job
 import (
 	"errors"
 
-	"github.com/arybolovlev/orkestrator/task"
+	"github.com/arybolovlev/orkestrator/api/task"
 )
 
 type Job struct {
-	ID    string
-	Name  string
-	Tasks []task.Task
+	ID    string      `hcl:"id,optional"`
+	Name  string      `hcl:"name,label"`
+	Tasks []task.Task `hcl:"task,block"`
 }
 
 func NewJob(n string, t []task.Task) *Job {
