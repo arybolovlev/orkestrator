@@ -3,7 +3,7 @@ module github.com/arybolovlev/orkestrator
 go 1.21
 
 require (
-	github.com/google/uuid v1.4.0
+	github.com/google/uuid v1.5.0
 	github.com/hashicorp/hcl/v2 v2.19.1
 	github.com/stretchr/testify v1.8.4
 	google.golang.org/grpc v1.59.0
